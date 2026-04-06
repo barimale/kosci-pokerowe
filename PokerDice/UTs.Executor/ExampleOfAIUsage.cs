@@ -16,13 +16,13 @@ namespace UTs.Executor
             Console.SetOut(_redirectWriter);
         }
 
-        [Fact(Skip="For model generation only")]
+        [Fact] // (Skip="For model generation only")
         public void Execute()
         {
             //given
-            var fileName = "r:\\model-XL.zip";
-            var logFileName = "r:\\training_log-XL.txt";
-            var amountOfIterations = 200_000;
+            var fileName = "r:\\model-PL.zip";
+            var logFileName = "r:\\training_log-PL.txt";
+            var amountOfIterations = 10_000;
             File.Delete(fileName);
             File.Delete(logFileName);
 
