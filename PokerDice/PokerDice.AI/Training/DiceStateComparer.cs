@@ -11,6 +11,8 @@ namespace PokerDice.AI.Training
             x.Die4.Equals(y.Die4) &&
             x.Die5.Equals(y.Die5);
 
-        public int GetHashCode(DiceState obj)
-            => obj.Action.ToLowerInvariant().GetHashCode();
+        public override int GetHashCode()
+{
+    return HashCode.Combine(Die1, Die2, Die3, Die4, Die5);
+}
     }
