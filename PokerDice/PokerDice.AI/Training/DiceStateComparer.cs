@@ -14,3 +14,4 @@ namespace PokerDice.AI.Training
         public int GetHashCode(DiceState obj)
             => obj.Action.ToLowerInvariant().GetHashCode();
     }
+}

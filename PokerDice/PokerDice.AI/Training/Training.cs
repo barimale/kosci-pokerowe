@@ -55,7 +55,11 @@ namespace PokerDice.AI.Training
                         Action = bestAction
                     });
                 }
-                
+                else
+                {
+                    OnIterateChange?.Invoke(i, (double)total.Count / samples * 100, "REDUNDANT", dice);
+                }
+
             });
 
             return total.AsEnumerable();
