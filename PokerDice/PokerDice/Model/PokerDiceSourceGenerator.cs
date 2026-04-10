@@ -17,12 +17,15 @@ namespace PokerDiceEngine.Model
 
         public IEnumerable<int[]> GenerateCollection()
         {
-            for (int a = 1; a <= 6; a++)
-                for (int b = a; b <= 6; b++)
-                    for (int c = b; c <= 6; c++)
-                        for (int d = c; d <= 6; d++)
-                            for (int e = d; e <= 6; e++)
-                                yield return new[] { a, b, c, d, e };
+            var rolls =
+                from a in Enumerable.Range(1, 6)
+                from b in Enumerable.Range(1, 6)
+                from c in Enumerable.Range(1, 6)
+                from d in Enumerable.Range(1, 6)
+                from e in Enumerable.Range(1, 6)
+                select new[] { a, b, c, d, e };
+
+            return rolls;
         }
 
         public int GenerateDie()
