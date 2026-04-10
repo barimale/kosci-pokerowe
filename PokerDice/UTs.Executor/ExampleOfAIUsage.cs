@@ -20,8 +20,8 @@ namespace UTs.Executor
         public void Execute()
         {
             //given
-            var fileName = "r:\\model-PL.zip";
-            var logFileName = "r:\\training_log-PL.txt";
+            var fileName = "r:\\model-PL2.zip";
+            var logFileName = "r:\\training_log-PL2.txt";
             var amountOfIterations = 10_000;
             File.Delete(fileName);
             File.Delete(logFileName);
@@ -31,6 +31,41 @@ namespace UTs.Executor
                 .WithLatencyOff();
 
             modelTrainer.OnIterateChange += (i,progress, bestAction, dice) =>
+            {
+                try
+                {
+                    var dices = string.Join(',', dice);
+                    var line = $"Iteration {i}, progress: {progress}%, best action: {bestAction}, dices: {dices}";
+                    Console.WriteLine(line);
+                    File.AppendAllText(logFileName, line + Environment.NewLine);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Failed to write to log file.");
+                }
+            };
+            modelTrainer.CreateAndSaveTo(amountOfIterations, fileName);
+
+            //then
+            Assert.True(File.Exists(logFileName));
+            Assert.True(File.Exists(fileName));
+        }
+
+        [Fact] // (Skip="For model generation only")
+        public void ExecuteThemAll()
+        {
+            //given
+            var fileName = "r:\\model-PL2.zip";
+            var logFileName = "r:\\training_log-PL2.txt";
+            var amountOfIterations = -1;
+            File.Delete(fileName);
+            File.Delete(logFileName);
+
+            //when
+            var modelTrainer = new TrainModel()
+                .WithLatencyOff();
+
+            modelTrainer.OnIterateChange += (i, progress, bestAction, dice) =>
             {
                 try
                 {

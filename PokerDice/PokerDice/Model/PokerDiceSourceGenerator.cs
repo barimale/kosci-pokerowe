@@ -15,6 +15,16 @@ namespace PokerDiceEngine.Model
             return new DiceContext(dice);
         }
 
+        public IEnumerable<int[]> GenerateCollection()
+        {
+            for (int a = 1; a <= 6; a++)
+                for (int b = a; b <= 6; b++)
+                    for (int c = b; c <= 6; c++)
+                        for (int d = c; d <= 6; d++)
+                            for (int e = d; e <= 6; e++)
+                                yield return new[] { a, b, c, d, e };
+        }
+
         public int GenerateDie()
         {
             return _rng.Next(1, 7);
