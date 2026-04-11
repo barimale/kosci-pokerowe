@@ -37,7 +37,7 @@ namespace PokerDice.AI
                       nameof(DiceState.Die4),
                       nameof(DiceState.Die5),
                       nameof(DiceState.RollIndex)))
-                  .Append(ml.MulticlassClassification.Trainers.LightGBM(
+                  .Append(ml.MulticlassClassification.Trainers.LightGbm(
                       labelColumnName: "Label",
                       featureColumnName: "Features"))
                   .Append(ml.Transforms.Conversion.MapKeyToValue("PredictedAction", "PredictedLabel"));
