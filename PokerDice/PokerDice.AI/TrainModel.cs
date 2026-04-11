@@ -37,7 +37,7 @@ namespace PokerDice.AI
                       nameof(DiceState.Die4),
                       nameof(DiceState.Die5),
                       nameof(DiceState.RollIndex)))
-                  .Append(ml.MulticlassClassification.Trainers.SdcaMaximumEntropy(
+                  .Append(ml.MulticlassClassification.Trainers.LightGBM(
                       labelColumnName: "Label",
                       featureColumnName: "Features"))
                   .Append(ml.Transforms.Conversion.MapKeyToValue("PredictedAction", "PredictedLabel"));
