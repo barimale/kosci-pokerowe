@@ -9,7 +9,7 @@ namespace PokerDice.UI
 {
     public partial class MainForm : Form
     {
-        private const string ModelPath = "r:\\model-PL.zip";
+        private const string ModelPath = "r:\\model-PL2.zip";
 
         private PrivateFontCollection pfc = new PrivateFontCollection();
         private Font diceFont;
@@ -24,7 +24,7 @@ namespace PokerDice.UI
             InitializeComponent();
             pfc.AddFontFile(@".\Resources\DpolyBlockDice.ttf");
             diceFont = new Font(pfc.Families[0], 40f);
-            var ml = new MLContext(seed: 42);
+            var ml = new MLContext();
 
             // Prediction engine
             // Define DataViewSchema and ITransformers

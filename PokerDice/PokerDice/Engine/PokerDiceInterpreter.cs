@@ -15,7 +15,7 @@ namespace PokerDiceEngine.Engine
         new ThreeOfKindExpression(),
         new TwoPairsExpression(),
         new PairExpression(),
-        new HighDiceExpression()
+        new NothingExpression()
     };
 
         public DiceResult? InterpretToResult(int[] dice)
