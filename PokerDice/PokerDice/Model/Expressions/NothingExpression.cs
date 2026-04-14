@@ -9,7 +9,7 @@ namespace PokerDiceEngine.Model.Expressions
         {
             return new DiceResult()
             {
-                Type = DiceType.HighDice,
+                Type = DiceType.Nothing,
                 Result = 0
             };
         }

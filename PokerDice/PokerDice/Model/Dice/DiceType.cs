@@ -10,6 +10,6 @@
         ThreeOfKind,
         TwoPairs,
         Pair,
-        HighDice
+        Nothing
     }
 }
